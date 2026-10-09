@@ -1,8 +1,4 @@
-"""Reference-based analysis of all assemblies:
- 1. reference regions NOT covered by each assembly (and overlap with rRNA / tRNA / IS elements, GC)
- 2. indels / SNPs of each assembly vs reference, and fraction of indels in homopolymers >= 4
-Usage: python scripts/analysis.py   (run from the repository root, after assemblies exist)
-"""
+
 import glob, os, re, subprocess
 from pathlib import Path
 import pandas as pd
@@ -37,7 +33,7 @@ def gc(s):
 def ov(a, b):
     return max(0, min(a[1], b[1]) - max(a[0], b[0]))
 
-# ---------- 1. uncovered reference regions ----------
+
 if not Path(GFF).exists():
     url = open("config.yaml").read().split("reference_url:")[1].split('"')[1].replace("_genomic.fna.gz", "_genomic.gff.gz")
     sh(f"wget -q -O data/ref/ref.gff.gz {url} && gunzip -c data/ref/ref.gff.gz > {GFF}")
@@ -79,7 +75,7 @@ for lab, fa in list_assemblies():
     rows.append(row)
 pd.DataFrame(rows).to_csv("results/missing_regions.csv", index=False)
 
-# ---------- 2. indels in homopolymers ----------
+
 def run_len(seq, pos, base):
     i = pos
     while i > 0 and seq[i - 1] == base:
