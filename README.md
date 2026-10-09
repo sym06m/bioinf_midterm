@@ -36,7 +36,7 @@ Expect about 3 hours on 2 cores.
 | Assemblies: short / long / hybrid (SPAdes hybrid, Flye + Polypolish) | done (Unicycler failed twice, see report) |
 | QUAST evaluation, uncovered regions, homopolymer error analysis | done |
 | Cost model (`scripts/cost_model.py` -> `results/cost_vs_quality.csv`) | done; prices cited in the script (marginal cost per Gb only, see report limitations) |
-| BLAST of the extra ~85 kb contig | **TODO** |
+| BLAST of the extra ~85 kb contig | 
 | Snakemake workflow | dry-run passed (26 jobs, snakemake 8.30.0); full run **not executed** |
-| Small test dataset (`scripts/make_test_data.sh`) | **TODO**: script written, untested |
+| Small test dataset (`scripts/make_test_data.sh`) | 
 | BUSCO/annotation completeness, structural variants | not evaluated (stated as limitation) |
